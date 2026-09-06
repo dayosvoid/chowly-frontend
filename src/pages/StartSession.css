@@ -1,0 +1,266 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.content-wrap {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.session-pill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2ecc71;
+  margin-right: 6px;
+}
+
+.status-dot.pulse {
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.table-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f4f4f4;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.welcome-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.welcome-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #d9622b;
+  font-weight: 700;
+}
+
+.welcome-heading h1 {
+  margin: 4px 0;
+  font-size: 1.4rem;
+}
+
+.table-badge {
+  text-align: center;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 4px 10px;
+}
+
+.table-badge span {
+  display: block;
+  font-size: 0.65rem;
+  color: #999;
+}
+
+.table-badge strong {
+  font-size: 1.1rem;
+}
+
+.restaurant-photo {
+  position: relative;
+  margin-top: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.restaurant-photo img {
+  width: 100%;
+  display: block;
+}
+
+.photo-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 50%);
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+.confirmed {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.session-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.session-inputs label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: #555;
+  gap: 4px;
+}
+
+.session-inputs input {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+}
+
+.input-error {
+  color: #c0392b;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.info-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.info-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-tag {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.status-tag.green {
+  background: #eafaf1;
+  color: #27ae60;
+}
+
+.status-tag.coral {
+  background: #fdecea;
+  color: #d9622b;
+}
+
+.info-text span {
+  display: block;
+  font-size: 0.7rem;
+  color: #999;
+  margin-top: 6px;
+}
+
+.info-text strong {
+  font-size: 1rem;
+}
+
+.kitchen-note {
+  display: flex;
+  gap: 10px;
+  background: #fff8f2;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.kitchen-note p {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #d9622b;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.assistance-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+  color: #555;
+}
+
+.toast {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
