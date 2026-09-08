@@ -59,10 +59,14 @@ export async function assignWaiter(orderId, waiterId) {
 }
 
 export async function assignStaffToItem(orderId, itemId, { chefId, bartenderId }) {
+  const payload = {};
+  if (chefId) payload.chefId = chefId;
+  if (bartenderId) payload.bartenderId = bartenderId;
+
   const res = await fetch(`${API_URL}/orders/${orderId}/items/${itemId}/assign`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(chefId ? { chefId } : { bartenderId }),
+    body: JSON.stringify(payload),
   });
   return handleResponse(res);
 }
@@ -91,3 +95,13 @@ export async function submitPayment(orderId, method) {
   });
   return handleResponse(res);
 }
+export async function updateOrderStatus(orderId, status) {
+  const res = await fetch(`${API_URL}/orders/${orderId}/status`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status }),
+  });
+  return handleResponse(res);
+}
+
+export const getRestaurantStaff = getStaff;

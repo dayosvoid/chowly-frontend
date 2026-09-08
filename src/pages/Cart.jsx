@@ -105,7 +105,7 @@ export default function Cart() {
         ))}
       </section>
 
-      <section className="card notes-card">
+      <section className="card notes-card my-4">
         <div className="section-label">
           <div>
             <Edit3 size={20} />

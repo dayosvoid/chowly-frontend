@@ -16,11 +16,12 @@ import OrderDetail from "./pages/OrderDetail";
 
 export default function App() {
   return (
+
     <RoleProvider>
       <OrderSessionProvider>
         <BrowserRouter>
           <Header />
-          <div className="app-content">
+          <div className="app-content container w-11/12 mx-auto">
             <Routes>
               <Route path="/" element={<Navigate to="/start" replace />} />
               <Route path="/start" element={<StartSession />} />

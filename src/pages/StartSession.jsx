@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight, Bell, Check, Clock3, HandHelping, ShieldCheck, Table2, Wifi } from "lucide-react";
 import { getRestaurants } from "../api/client";
 import { useOrderSession } from "../context/OrderSessionContext";
+import { useRole } from "../context/RoleContext"; // 1. Import useRole
 import "./StartSession.css";
 
 const restaurantImage =
@@ -11,6 +12,7 @@ const restaurantImage =
 export default function StartSession() {
   const navigate = useNavigate();
   const { startSession } = useOrderSession();
+  const { updateUserName } = useRole(); // 2. Extract updateUserName from context
 
   const [restaurant, setRestaurant] = useState(null);
   const [tableNumber, setTableNumber] = useState("07");
@@ -52,6 +54,9 @@ export default function StartSession() {
       setError("Restaurant details are still loading - try again in a moment.");
       return;
     }
+
+    // 3. Save the name into context (which updates the Header immediately and persists via localStorage)
+    updateUserName(customerName.trim());
 
     startSession({
       restaurantId: restaurant.id || restaurant._id,
@@ -140,6 +145,7 @@ export default function StartSession() {
               <div className="info-text">
                 <span>Guest Wi-Fi</span>
                 <strong>Restaurant-Guest</strong>
+                <p>Pass: <b>copper2026</b></p>
               </div>
             </section>
             <section className="info-card">
