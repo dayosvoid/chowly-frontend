@@ -95,13 +95,35 @@ export async function submitPayment(orderId, method) {
   });
   return handleResponse(res);
 }
-export async function updateOrderStatus(orderId, status) {
-  const res = await fetch(`${API_URL}/orders/${orderId}/status`, {
-    method: "PATCH",
+
+
+export async function updateOrderStatus(orderId, status, payload = {}) {
+  let endpoint = `/orders/${orderId}`;
+  let method = "PATCH";
+  let body = { status, ...payload };
+
+  if (status === "served") {
+    endpoint = `/orders/${orderId}/serve`;
+    body = {};
+  } else if (status === "paid") {
+    endpoint = `/orders/${orderId}/payment`;
+    body = { method: payload.method || "card" };
+  } else if (status === "assigned" && payload.waiterId) {
+    endpoint = `/orders/${orderId}/assign-waiter`;
+    body = { waiterId: payload.waiterId };
+  }
+
+  const response = await fetch(`${API_URL}${endpoint}`, {
+    method,
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ status }),
+    body: JSON.stringify(body),
   });
-  return handleResponse(res);
+
+  if (!response.ok) {
+    const errData = await response.json().catch(() => ({}));
+    throw new Error(errData.error || "Failed to update order status");
+  }
+  return response.json();
 }
 
 export const getRestaurantStaff = getStaff;
